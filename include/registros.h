@@ -18,7 +18,14 @@ struct pessoas{
     int idade;
     int nPassagens;
     passagem passagens[];
+    int nInadimplencia;
     inadimplencia inadimplencias[];
+};
+
+struct pessoaNode
+{
+  pessoas pessoa;
+  struct pessoaNode*prox;
 };
 
 
