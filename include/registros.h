@@ -17,7 +17,7 @@ struct pessoas{
     char cidade[50];
     int idade;
     int nPassagens;
-    passagem passagens[];
+    passagem passagens[2];
     inadimplencia inadimplencias[];
 };
 
@@ -37,10 +37,6 @@ struct inadimplencia{
     char nomeInadimplencia[50];
 };
 
-
-struct tipoViatura{
-
-};
 
 
 
