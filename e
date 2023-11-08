@@ -1,3 +1,86 @@
+Pessoa *carregar_dados_pessoas(const char *arquivo, int *qtd)
+{
+    FILE *fp = fopen(arquivo, "r");
+    if (!fp)
+    {
+        printf("Erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+
+    fscanf(fp, "%d", qtd);
+
+    Pessoa *pessoas = (Pessoa *)malloc(*qtd * sizeof(Pessoa));
+    if (!pessoas)
+    {
+        printf("Erro ao alocar memória.\n");
+        exit(1);
+    }
+
+    for (int i = 0; i < *qtd; i++)
+    {
+        fscanf(fp, "%d %s %s %s", &pessoas[i].id, pessoas[i].nome, pessoas[i].endereco, pessoas[i].email);
+    }
+
+    fclose(fp);
+    return pessoas;
+}
+
+Viatura *carregar_dados_viaturas(const char *arquivo, int *qtd)
+{
+    FILE *fp = fopen(arquivo, "r");
+    if (!fp)
+    {
+        printf("Erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+
+    fscanf(fp, "%d", qtd);
+
+    Viatura *viaturas = (Viatura *)malloc(*qtd * sizeof(Viatura));
+    if (!viaturas)
+    {
+        printf("Erro ao alocar memória.\n");
+        exit(1);
+    }
+
+    for (int i = 0; i < *qtd; i++)
+    {
+        fscanf(fp, "%d %s %s %d", &viaturas[i].id, viaturas[i].nome, viaturas[i].localizacao, &viaturas[i].id_pessoa);
+    }
+
+    fclose(fp);
+    return viaturas;
+}
+
+Policial *carregar_dados_policiais(const char *arquivo, int *qtd)
+{
+    FILE *fp = fopen(arquivo, "r");
+    if (!fp)
+    {
+        printf("Erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+
+    fscanf(fp, "%d", qtd);
+
+    Policial *policiais = (Policial *)malloc(*qtd * sizeof(Policial));
+    if (!policiais)
+    {
+        printf("Erro ao alocar memória.\n");
+        exit(1);
+    }
+
+    for (int i = 0; i < *qtd; i++)
+    {
+        fscanf(fp, "%d %s %s %d", &policiais[i].id, policiais[i].nome, policiais[i].localizacao, &policiais[i].id_pessoa);
+    }
+
+    fclose(fp);
+    return policiais;
+}
+
+poli
+
 #include <stdio.h>
 #include <stdlib.h>
 

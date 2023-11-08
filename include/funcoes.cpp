@@ -5,7 +5,8 @@
 void ViaturaLogin(int tipo)
 {
     int cod_viatura, qntd;
-    policiais *pms; 
+    policiais *pms;
+    printf("            SPM - Viatura Login \n");
     printf("Codigo da Viatura: ");
     scanf("%d", &cod_viatura);
     printf("Quantidade de Policiais: ");
@@ -28,13 +29,29 @@ void ViaturaLogin(int tipo)
             printf("Autorizacao de embarque negada\n");
         }
     }
-
+    printf("            SPM - Viatura Login \n");
     printf("Identificacao dos PMs: \n");
     for (int i = 0; i < qntd; i++)
     {
         printf("Nome do Policial %d: ", i + 1);
         scanf(" %[^\n]", pms[i].nome);
         
+    }
+    printf("            SPM - Viatura Estado Neutro \n");
+
+    int opc;
+    printf("1 - Apto para atender ocorrencia");
+    printf("2 - Cancelar Embarcacao");
+    scanf("%d", &opc);
+    if(opc == 1){
+
+    }
+    else if(opc == 2){
+        //voltar para o menu
+    }
+    else{
+        printf("opcao indisponivel");
+        //finalizar
     }
 
     free(pms);
