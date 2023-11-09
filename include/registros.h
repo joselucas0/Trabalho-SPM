@@ -8,6 +8,7 @@ struct policiais {
     int idade;
     char cargo[30];
     char senha[20];
+    policiais*prox;
 };
 
 
@@ -30,7 +31,8 @@ struct passagem{
 
 struct viaturas{
     int cod;
-    tipoViatura tipo;
+    char tipo[20];
+    viaturas*prox;
 };
 
 
@@ -38,11 +40,6 @@ struct viaturas{
 
 struct inadimplencia{
     char nomeInadimplencia[50];
-};
-
-
-struct tipoViatura{
-
 };
 
 
