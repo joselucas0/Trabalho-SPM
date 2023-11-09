@@ -45,6 +45,7 @@ pessoas *carregarPessoas(pessoas* inicioLista) {
     i++;
 
     //colocar p em iniciolista
+    inserir_pessoa_fim(inicioLista, p);
 
     in = fscanf(arq, "%s", nome);
 

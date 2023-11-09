@@ -1,4 +1,6 @@
 #include "./include/funcoes.h"
+#include "./include/registros.h"
+#include "./include/carregarDados.cpp"
 
 
 
