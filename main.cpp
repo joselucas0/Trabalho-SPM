@@ -3,22 +3,19 @@
 #include "./include/carregarDados.cpp"
 
 
-
-/*  COMO CARREGAR
-    programa->dadosCarregados = true;
-    programa->cursos_e_pesos = carregar_cursos_e_pesos();
-    programa->cursos_e_vagas = carregar_cursos_e_vagas();
-    programa->candidatos = carregar_dados(programa->qntdInscritos);
-    programa->notas = carregar_acertos(programa->qntdCandidatos);
-    calcularNotasArea(programa->notas, programa->candidatos,
-    programa->cursos_e_pesos, programa->qntdCandidatos);
-    ordenarCandidatos(programa->notas, programa->qntdCandidatos);   
-*/
 int main() {
-  principal *programa = (struct principal *)calloc(sizeof(principal));
+  principal *programa = ( principal *)calloc(sizeof(principal));
   programa->dadosCarregados = false;
 
   programa->pessoas = carregarPessoas(programa->pessoas);
+
+  if(programa->pessoas != NULL &&
+     programa->policiais != NULL &&
+     programa->viaturas != NULL){
+        programa->dadosCarregados = true;
+     }else{
+      printf("ERRO AO CARREGAR ARQUIVOS");
+     }
 
   do {
     menu(programa);
@@ -41,13 +38,8 @@ void menu(principal *programa) {
   scanf("%d", &programa->opc);
   printf("\n");
 
-  if (programa->opc == 1 && !programa->dadosCarregados) {
+  if (programa->opc == 1) {
     
-  }
-
-  if (programa->opc > 0 && programa->opc < 7 && !programa->dadosCarregados) {
-    printf("Por favor carregue os dados antes que possa executar qualquer "
-           "outra função!\n\n");
   }
 
   if (programa->opc == 2) {
