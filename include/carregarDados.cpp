@@ -1,49 +1,57 @@
-#include "./funcoes.h"
-#include "./registros.h"
+#include "funcoes.h"
+#include "registros.h"
 
 
 
-void adicionar(pessoas pessoa, pessoaNode *&lst)
-{
-    pessoaNode *nova;
 
-    nova = (pessoaNode *) calloc(1, sizeof (pessoa));
-    nova->pessoa = pessoa;
-    nova->prox = lst;
-    lst = nova;
-}
-
-
-pessoas *carregarPessoas() {
+pessoas *carregarPessoas(pessoas* inicioLista) {
   FILE *arq;
 
-  arq = fopen("./arquivos/pessoas.txt", "r");
+  arq = fopen("./arquivos_entrada/pessoas.txt", "r");
 
   if (arq == NULL) {
     printf("O arquivo de cursos e pesos não foi encontrado!\n\n");
     return 0;
   }
 
-  int i = 0;
-  pessoaNode inicioLista;
+  int i, in;
   pessoas* p;
+  char nome[50];
+  //*p representa o novo nó
 
-  while (p != EOF) {
-    p = fscanf(arq, "%s", &p[i].nome);
 
-    if (p == EOF)
-      break;
 
-    fscanf(arq, " %s", &p[i].cpf);
-    fscanf(arq, "%s", &p[i].cidade);
-    fscanf(arq, "%d", &p[i].idade);
-    fscanf(arq, "%d", &p[i].nPassagens);
-    //ler as passagens
-    fscanf(arq, "%d", &p[i].nInadimplencia);
+  char passagem[50];
+  in = fscanf(arq, "%s", nome);
+
+  while (in != EOF) {
+    p= (pessoas*)calloc(1, sizeof(pessoas));
+    strcpy(p->nome, nome);
+    fscanf(arq, " %s", p->cpf);
+    fscanf(arq, "%s", p->cidade);
+    fscanf(arq, "%d", &p->idade);
+    fscanf(arq, "%d", &p->nPassagens);
+
+    //ler passagens
+    if(p->nPassagens>0){
+        p->passagens = (passagem*)calloc(p->nPassagens, sizeof(passagem));
+        for(i=0; i<p->nPassagens; i++){
+          fscanf(arq, "%s", passagem);
+          strcpy(p->passagens[i].nomePassagem, passagem);
+        }
+    }
+    fscanf(arq, "%d", &p->nInadimplencia);
     //ler inadimplencias
     i++;
+
+    //colocar p em iniciolista
+
+    in = fscanf(arq, "%s", nome);
+
   }
 
   fclose(arq);
-  return lPessoas;
+  return inicioLista;
 }
+
+

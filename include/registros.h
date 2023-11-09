@@ -17,15 +17,14 @@ struct pessoas{
     char cidade[50];
     int idade;
     int nPassagens;
-    passagem passagens[];
+    passagem *passagens;
     int nInadimplencia;
-    inadimplencia inadimplencias[];
+    inadimplencia *inadimplencias;
+    pessoas * prox;
 };
 
-struct pessoaNode
-{
-  pessoas pessoa;
-  struct pessoaNode*prox;
+struct passagem{
+    char nomePassagem[30];
 };
 
 
@@ -35,9 +34,6 @@ struct viaturas{
 };
 
 
-struct passagem{
-    char nomePassagem[50];
-};
 
 
 struct inadimplencia{

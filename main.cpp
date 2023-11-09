@@ -13,8 +13,10 @@
     ordenarCandidatos(programa->notas, programa->qntdCandidatos);   
 */
 int main() {
-  principal *programa = (struct principal *)malloc(sizeof(principal));
+  principal *programa = (struct principal *)calloc(sizeof(principal));
   programa->dadosCarregados = false;
+
+  programa->pessoas = carregarPessoas(programa->pessoas);
 
   do {
     menu(programa);
