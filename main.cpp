@@ -3,19 +3,58 @@
 
 int main()
 {
-  int qtd_pessoas;
-  int qtd_viaturas;
-  int qtd_policiais;
+  tArquivos arquivosNomes;
+  FILE *arquivo01, *arquivo02, *arquivo04, *arquivo05;
+  tTamanhos tamanhos;
+  int op = -1;
 
-  Pessoa *pessoas = carregar_dados_pessoas("pessoas.txt", &qtd_pessoas);
-  Viatura *viaturas = carregar_dados_viaturas("viaturas.txt", &qtd_viaturas);
-  Policial *policiais = carregar_dados_policiais("policiais.txt", &qtd_policiais);
+  ler_e_inserir(arquivoNomePessoas, arquivoNomePoliciais, arquivoNomeViaturas);
 
   do
   {
     menu(programa);
   } while (programa->opc != 0);
   printf("Programa encerrado.\n");
+}
+
+// Definindo os nomes dos arquivos
+strcpy(arquivosNomes.nome01, "cursos_e_pesos.txt");
+strcpy(arquivosNomes.nome02, "cursos_e_vagas.txt");
+strcpy(arquivosNomes.nome03, "dados.txt");
+strcpy(arquivosNomes.nome04, "acertos.txt");
+strcpy(arquivosNomes.nome05, "alteracaoNotaRedacao.txt");
+
+// Abrindo os arquivos para leitura
+arquivo01 = fopen(arquivosNomes.nome01, "r");
+arquivo02 = fopen(arquivosNomes.nome02, "r");
+arquivo04 = fopen(arquivosNomes.nome04, "r");
+arquivo05 = fopen(arquivosNomes.nome05, "r");
+
+if (!(arquivo01 && arquivo02 && arquivo04))
+{
+  printf("Erro ao abrir os arquivos!");
+  return 0;
+}
+else
+{
+  // Lendo os valores dos arquivos e armazenando nas variáveis
+  fscanf(arquivo01, "%d", &tamanhos.max01);
+  fscanf(arquivo02, "%d", &tamanhos.max02);
+  tamanhos.max03 = pegarTamanhoArquivoDados(arquivosNomes, tamanhos);
+  fscanf(arquivo04, "%d", &tamanhos.max04);
+  fscanf(arquivo05, "%d", &tamanhos.max05);
+
+  // Exibindo os valores lidos dos arquivos
+  printf("max01: %d\n", tamanhos.max01);
+  printf("max02: %d\n", tamanhos.max02);
+  printf("max03: %d\n", tamanhos.max03);
+  printf("max04: %d\n", tamanhos.max04);
+  printf("max05: %d\n", tamanhos.max05);
+
+  fclose(arquivo01);
+  fclose(arquivo02);
+  fclose(arquivo04);
+  fclose(arquivo05);
 }
 
 void menu(principal *programa)

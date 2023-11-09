@@ -21,30 +21,36 @@ struct pessoas{
     inadimplencia inadimplencias[];
 };
 
-
 struct viaturas{
     int cod;
-    tipoViatura tipo;
+    char tipo[20];
 };
 
-
-struct passagem{
-    char nomePassagem[50];
+struct passagem
+{
+    char crime[50];
 };
 
-
-struct inadimplencia{
-    char nomeInadimplencia[50];
+struct inadimplencia
+{
+    int situacao;
+    char crime[50];
 };
 
+struct
+{
+    char nome01[50];
+    char nome02[50];
+    char nome03[50];
+    char nome04[50];
+    char nome05[50];
+} tArquivos;
 
-
-
-struct principal {
-  int opc;
-  bool dadosCarregados;
-  pessoas *pessoas;
-  policiais *policiais;
-  viaturas *viaturas;
-
-};
+struct
+{
+    int max01;
+    int max02;
+    int max03;
+    int max04;
+    int max05;
+} tTamanhos;
