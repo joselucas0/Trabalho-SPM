@@ -3,24 +3,25 @@
 
 int main()
 {
-  tArquivos arquivosNomes;
-  FILE *arquivo01, *arquivo02, *arquivo04, *arquivo05;
-  tTamanhos tamanhos;
-  int op = -1;
 
-  ler_e_inserir(arquivoNomePessoas, arquivoNomePoliciais, arquivoNomeViaturas);
+  
 
-  do
-  {
-    menu(programa);
-  } while (programa->opc != 0);
-  printf("Programa encerrado.\n");
+tArquivos arquivosNomes;
+FILE *arquivo01, *arquivo02, *arquivo04, *arquivo05;
+tTamanhos tamanhos;
+int op = -1;
+
+do
+{
+  menu(programa);
+} while (programa->opc != 0);
+printf("Programa encerrado.\n");
 }
 
 // Definindo os nomes dos arquivos
-strcpy(arquivosNomes.nome01, "cursos_e_pesos.txt");
-strcpy(arquivosNomes.nome02, "cursos_e_vagas.txt");
-strcpy(arquivosNomes.nome03, "dados.txt");
+strcpy(arquivosNomes.nome01, "pessoas.txt");
+strcpy(arquivosNomes.nome02, "policiais.txt");
+strcpy(arquivosNomes.nome03, "viatura.txt");
 strcpy(arquivosNomes.nome04, "acertos.txt");
 strcpy(arquivosNomes.nome05, "alteracaoNotaRedacao.txt");
 
@@ -29,6 +30,9 @@ arquivo01 = fopen(arquivosNomes.nome01, "r");
 arquivo02 = fopen(arquivosNomes.nome02, "r");
 arquivo04 = fopen(arquivosNomes.nome04, "r");
 arquivo05 = fopen(arquivosNomes.nome05, "r");
+
+
+
 
 if (!(arquivo01 && arquivo02 && arquivo04))
 {
@@ -40,7 +44,7 @@ else
   // Lendo os valores dos arquivos e armazenando nas variáveis
   fscanf(arquivo01, "%d", &tamanhos.max01);
   fscanf(arquivo02, "%d", &tamanhos.max02);
-  tamanhos.max03 = pegarTamanhoArquivoDados(arquivosNomes, tamanhos);
+  tamanhos.max03 = pegarTamanhoArquivoDados(arquivosNomes.nome03);
   fscanf(arquivo04, "%d", &tamanhos.max04);
   fscanf(arquivo05, "%d", &tamanhos.max05);
 
@@ -56,7 +60,6 @@ else
   fclose(arquivo04);
   fclose(arquivo05);
 }
-
 void menu(principal *programa)
 {
   printf(".+*****+.Menu.+******+\n");
