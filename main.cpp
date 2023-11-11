@@ -7,7 +7,7 @@ int main()
   
 
 tArquivos arquivosNomes;
-FILE *arquivo01, *arquivo02, *arquivo04, *arquivo05;
+FILE *arquivo01, *arquivo02, *arquivo03;
 tTamanhos tamanhos;
 int op = -1;
 
@@ -22,19 +22,16 @@ printf("Programa encerrado.\n");
 strcpy(arquivosNomes.nome01, "pessoas.txt");
 strcpy(arquivosNomes.nome02, "policiais.txt");
 strcpy(arquivosNomes.nome03, "viatura.txt");
-strcpy(arquivosNomes.nome04, "acertos.txt");
-strcpy(arquivosNomes.nome05, "alteracaoNotaRedacao.txt");
 
 // Abrindo os arquivos para leitura
 arquivo01 = fopen(arquivosNomes.nome01, "r");
 arquivo02 = fopen(arquivosNomes.nome02, "r");
-arquivo04 = fopen(arquivosNomes.nome04, "r");
-arquivo05 = fopen(arquivosNomes.nome05, "r");
+arquivo04 = fopen(arquivosNomes.nome03, "r");
 
 
 
 
-if (!(arquivo01 && arquivo02 && arquivo04))
+if (!(arquivo01 && arquivo02 && arquivo03))
 {
   printf("Erro ao abrir os arquivos!");
   return 0;
@@ -45,15 +42,12 @@ else
   fscanf(arquivo01, "%d", &tamanhos.max01);
   fscanf(arquivo02, "%d", &tamanhos.max02);
   tamanhos.max03 = pegarTamanhoArquivoDados(arquivosNomes.nome03);
-  fscanf(arquivo04, "%d", &tamanhos.max04);
-  fscanf(arquivo05, "%d", &tamanhos.max05);
+  
 
   // Exibindo os valores lidos dos arquivos
   printf("max01: %d\n", tamanhos.max01);
   printf("max02: %d\n", tamanhos.max02);
   printf("max03: %d\n", tamanhos.max03);
-  printf("max04: %d\n", tamanhos.max04);
-  printf("max05: %d\n", tamanhos.max05);
 
   fclose(arquivo01);
   fclose(arquivo02);
